@@ -11,6 +11,12 @@ import HeaderComponent from '~/components/layout/defaults/Header.vue'
 export default {
   name: 'LayoutMain',
   components: { FooterComponents, HeaderComponent },
+  watch: {
+    $route(to, from) {
+      console.log('route change to', to)
+      console.log('route change from', from)
+    }
+  }
 }
 </script>
 

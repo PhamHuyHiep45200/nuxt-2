@@ -18,7 +18,7 @@ export default {
   css: ['element-ui/lib/theme-chalk/index.css', '@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/element-ui'],
+  plugins: ['@/plugins/element-ui', { src: '@/plugins/vue2-google-maps.js' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -34,13 +34,21 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: [/^element-ui/],
+    transpile: [/^element-ui/, /^vue2-google-maps($|\/)/],
     postcss: {
       postcssOptions: {
         plugins: {
           tailwindcss: {},
           autoprefixer: {}
         }
+      }
+    },
+    loaders: {
+      sass: {
+        implementation: require('sass')
+      },
+      scss: {
+        implementation: require('sass')
       }
     }
   }
